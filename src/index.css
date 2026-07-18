@@ -1,0 +1,336 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AI Automation Portfolio Design System
+   Dark, Supabase-inspired with subtle green accents
+   All colors in HSL format */
+
+@layer base {
+  :root {
+    /* Core Backgrounds */
+    --background: 214 33% 6%;
+    /* #0B0F14 */
+    --background-deep: 214 40% 4%;
+    /* #070B0F */
+    --foreground: 220 13% 91%;
+    /* #E5E7EB */
+
+    /* Surface Colors */
+    --card: 217 33% 11%;
+    /* #111827 */
+    --card-foreground: 220 13% 91%;
+    --popover: 217 33% 11%;
+    --popover-foreground: 220 13% 91%;
+
+    /* Primary - Green Accent */
+    --primary: 156 64% 52%;
+    /* #3ECF8E */
+    --primary-foreground: 214 33% 6%;
+    --primary-glow: 156 64% 52%;
+
+    /* Secondary */
+    --secondary: 215 19% 15%;
+    /* #1F2937 */
+    --secondary-foreground: 220 13% 91%;
+
+    /* Muted */
+    --muted: 217 33% 11%;
+    --muted-foreground: 218 11% 65%;
+    /* #9CA3AF */
+
+    /* Accent */
+    --accent: 215 19% 15%;
+    --accent-foreground: 220 13% 91%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 13% 91%;
+
+    /* Borders */
+    --border: 215 19% 15%;
+    /* #1F2937 */
+    --input: 215 19% 15%;
+    --ring: 156 64% 52%;
+
+    /* Radius */
+    --radius: 0.5rem;
+
+    /* Sidebar (inherits dark theme) */
+    --sidebar-background: 217 33% 11%;
+    --sidebar-foreground: 220 13% 91%;
+    --sidebar-primary: 156 64% 52%;
+    --sidebar-primary-foreground: 214 33% 6%;
+    --sidebar-accent: 215 19% 15%;
+    --sidebar-accent-foreground: 220 13% 91%;
+    --sidebar-border: 215 19% 15%;
+    --sidebar-ring: 156 64% 52%;
+
+    /* Custom Design Tokens */
+    --gradient-glow: radial-gradient(ellipse at center, hsl(156 64% 52% / 0.12) 0%, transparent 70%);
+    --gradient-surface: linear-gradient(180deg, hsl(217 33% 11%) 0%, hsl(214 33% 6%) 100%);
+    --shadow-glow: 0 0 60px -10px hsl(156 64% 52% / 0.3);
+    --shadow-card: 0 4px 40px -4px hsl(0 0% 0% / 0.4);
+    --text-gradient: linear-gradient(135deg, hsl(220 13% 91%) 0%, hsl(156 64% 52%) 100%);
+
+    /* Animation Tokens */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-slow: 600ms;
+    --duration-medium: 400ms;
+    --duration-fast: 200ms;
+  }
+
+  /* Dark mode is default, but keep for consistency */
+  .dark {
+    --background: 214 33% 6%;
+    --background-deep: 214 40% 4%;
+    --foreground: 220 13% 91%;
+    --card: 217 33% 11%;
+    --card-foreground: 220 13% 91%;
+    --popover: 217 33% 11%;
+    --popover-foreground: 220 13% 91%;
+    --primary: 156 64% 52%;
+    --primary-foreground: 214 33% 6%;
+    --secondary: 215 19% 15%;
+    --secondary-foreground: 220 13% 91%;
+    --muted: 217 33% 11%;
+    --muted-foreground: 218 11% 65%;
+    --accent: 215 19% 15%;
+    --accent-foreground: 220 13% 91%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 13% 91%;
+    --border: 215 19% 15%;
+    --input: 215 19% 15%;
+    --ring: 156 64% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: auto; /* Let Lenis handle smooth scrolling */
+  }
+
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    html {
+      font-size: 15px;
+    }
+
+    /* Prevent horizontal scroll on mobile */
+    body {
+      overflow-x: hidden;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+
+    @media (pointer: fine) {
+      cursor: none;
+    }
+  }
+
+  @media (pointer: fine) {
+
+    a,
+    button,
+    [role="button"],
+    .cursor-pointer {
+      cursor: none !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 17px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    body {
+      font-size: 18px;
+    }
+  }
+
+  /* Subtle grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .font-display {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+}
+
+@layer components {
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-ambient {
+    background: var(--gradient-glow);
+  }
+
+  /* Text styles */
+  .text-gradient {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card variants */
+  .card-elevated {
+    @apply bg-card border border-border rounded-lg;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium border border-transparent;
+    @apply transition-all duration-300;
+    @apply hover:bg-transparent hover:border-primary hover:text-primary;
+    @apply hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)];
+  }
+
+  .btn-ghost {
+    @apply text-muted-foreground px-6 py-3 rounded-md font-medium border border-transparent;
+    @apply transition-all duration-300;
+    @apply hover:text-primary hover:border-primary hover:bg-transparent;
+  }
+
+  /* Workflow node styles */
+  .workflow-node {
+    @apply bg-card border border-border rounded-lg p-4;
+    @apply transition-all duration-500;
+  }
+
+  .workflow-node-active {
+    @apply border-primary;
+    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.4);
+  }
+
+  .workflow-line {
+    @apply stroke-border;
+    stroke-width: 1.5;
+  }
+
+  .workflow-line-active {
+    @apply stroke-primary;
+    filter: drop-shadow(0 0 4px hsl(var(--primary) / 0.6));
+  }
+}
+
+@layer utilities {
+
+  /* Selection */
+  ::selection {
+    background-color: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Focus visible */
+  .focus-ring {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* Enhanced focus states for accessibility */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Skip to main content link for screen readers */
+  .skip-to-main {
+    @apply absolute -top-full left-0 bg-primary text-primary-foreground px-4 py-2 z-[10000];
+    @apply focus:top-0 transition-all;
+  }
+}

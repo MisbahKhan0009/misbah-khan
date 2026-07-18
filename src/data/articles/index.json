@@ -1,0 +1,189 @@
+[
+  {
+    "id": "2026-07-18-solving-the-sql-gap-and-island-problem-a-step-by-step-guide",
+    "slug": "solving-the-sql-gap-and-island-problem-a-step-by-step-guide",
+    "title": "Solving the SQL Gap-and-Island Problem: A Step-by-Step Guide",
+    "excerpt": "Learn how to solve the classic SQL gap-and-island problem to identify consecutive active user sessions using window functions in PostgreSQL.",
+    "category": "SQL",
+    "tags": [
+      "PostgreSQL",
+      "Window Functions",
+      "Analytics"
+    ],
+    "readTime": 5,
+    "createdAt": "2026-07-18T21:02:51.077Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-18-solving-the-consecutive-login-problem-with-postgresql-window-functions",
+    "slug": "solving-the-consecutive-login-problem-with-postgresql-window-functions",
+    "title": "Solving the Consecutive Login Problem with PostgreSQL Window Functions",
+    "excerpt": "Learn how to solve the classic SQL gap-and-island problem to identify consecutive user login streaks using window functions.",
+    "category": "SQL",
+    "tags": [
+      "PostgreSQL",
+      "Window Functions",
+      "Problem Solving"
+    ],
+    "readTime": 4,
+    "createdAt": "2026-07-18T20:04:08.904Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-18-parsing-clinical-notes-extracting-icd-10-codes-and-npis-using-python-regex",
+    "slug": "parsing-clinical-notes-extracting-icd-10-codes-and-npis-using-python-regex",
+    "title": "Parsing Clinical Notes: Extracting ICD-10 Codes and NPIs Using Python Regex",
+    "excerpt": "Learn how to write and optimize regular expressions in Python to clean and extract structured medical codes and NPIs from unstructured clinical text.",
+    "category": "Data Engineering",
+    "tags": [
+      "python",
+      "regex",
+      "data-extraction"
+    ],
+    "readTime": 4,
+    "createdAt": "2026-07-18T20:05:34.086Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-18-building-resilient-web-scrapers-mastering-playwright-locators",
+    "slug": "building-resilient-web-scrapers-mastering-playwright-locators",
+    "title": "Building Resilient Web Scrapers: Mastering Playwright Locators",
+    "excerpt": "Learn how to write resilient web scrapers in Python using Playwright's user-facing locators, filtering, and structural chaining to prevent script breakage.",
+    "category": "Automation",
+    "tags": [
+      "Python",
+      "Playwright",
+      "Web Scraping",
+      "Automation"
+    ],
+    "readTime": 5,
+    "createdAt": "2026-07-18T20:04:35.564Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-18-building-a-secure-postgresql-query-agent-with-langchain",
+    "slug": "building-a-secure-postgresql-query-agent-with-langchain",
+    "title": "Building a Secure PostgreSQL Query Agent with LangChain",
+    "excerpt": "Learn how to build a secure, read-only SQL agent using LangChain and Python to translate natural language questions into executable PostgreSQL queries.",
+    "category": "AI",
+    "tags": [
+      "Python",
+      "PostgreSQL",
+      "LangChain"
+    ],
+    "readTime": 5,
+    "createdAt": "2026-07-18T20:09:37.643Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-18-building-a-secure-postgresql-natural-language-interface-with-langchain",
+    "slug": "building-a-secure-postgresql-natural-language-interface-with-langchain",
+    "title": "Building a Secure PostgreSQL Natural Language Interface with LangChain",
+    "excerpt": "Learn how to build a reliable, secure natural language interface for your PostgreSQL database using LangChain, complete with query validation guardrails.",
+    "category": "AI",
+    "tags": [
+      "PostgreSQL",
+      "Python",
+      "LangChain"
+    ],
+    "readTime": 5,
+    "createdAt": "2026-07-18T21:03:06.490Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-17-retool-postgresql-parameterized-queries",
+    "slug": "retool-postgresql-parameterized-queries",
+    "title": "Connecting Retool to PostgreSQL with Parameterized Queries",
+    "excerpt": "How to build safe, performant internal tools in Retool by using parameterized SQL queries that prevent injection and optimize execution plans.",
+    "category": "Automation",
+    "tags": [
+      "Retool",
+      "PostgreSQL",
+      "Internal Tools",
+      "SQL"
+    ],
+    "readTime": 5,
+    "createdAt": "2026-07-17T10:00:00.000Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-16-python-data-validation-pydantic",
+    "slug": "python-data-validation-pydantic",
+    "title": "Bulletproof Data Pipelines: Validating ETL Output with Pydantic",
+    "excerpt": "Use Pydantic models to validate data at every stage of your Python ETL pipeline, catching schema violations before they corrupt your database.",
+    "category": "Python",
+    "tags": [
+      "Python",
+      "Pydantic",
+      "ETL",
+      "Data Validation"
+    ],
+    "readTime": 5,
+    "createdAt": "2026-07-16T10:00:00.000Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-15-postgresql-recursive-ctes-hierarchical-data",
+    "slug": "postgresql-recursive-ctes-hierarchical-data",
+    "title": "Recursive CTEs in PostgreSQL: Querying Hierarchical Data",
+    "excerpt": "Learn how to use recursive common table expressions to traverse tree structures like org charts, category trees, and referral chains in PostgreSQL.",
+    "category": "SQL",
+    "tags": [
+      "PostgreSQL",
+      "CTEs",
+      "Recursive Queries",
+      "Data Modeling"
+    ],
+    "readTime": 6,
+    "createdAt": "2026-07-15T10:00:00.000Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-14-n8n-error-handling-patterns",
+    "slug": "n8n-error-handling-patterns",
+    "title": "Building Fault-Tolerant n8n Workflows: Error Handling Patterns",
+    "excerpt": "Three patterns for making n8n automation workflows resilient: retry logic, dead-letter queues, and graceful degradation with fallback paths.",
+    "category": "Automation",
+    "tags": [
+      "n8n",
+      "Workflow Automation",
+      "Error Handling",
+      "Resilience"
+    ],
+    "readTime": 5,
+    "createdAt": "2026-07-14T10:00:00.000Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-13-selenium-proxy-rotation-scraping",
+    "slug": "selenium-proxy-rotation-scraping",
+    "title": "Implementing Proxy Rotation in Selenium for Large-Scale Scraping",
+    "excerpt": "A practical guide to rotating proxies in Python Selenium to avoid IP bans and rate limits when scraping data at scale.",
+    "category": "Python",
+    "tags": [
+      "Selenium",
+      "Python",
+      "Web Scraping",
+      "Proxy"
+    ],
+    "readTime": 5,
+    "createdAt": "2026-07-13T10:00:00.000Z",
+    "published": true
+  },
+  {
+    "id": "2026-07-12-decomposing-ambiguous-data-problems",
+    "slug": "decomposing-ambiguous-data-problems",
+    "title": "How I Decompose Ambiguous Data Problems",
+    "excerpt": "A systematic approach to tackling data analysis challenges that have no clear documentation, unclear requirements, or messy undocumented systems.",
+    "category": "Problem Solving",
+    "tags": [
+      "Problem Solving",
+      "Data Analysis",
+      "Methodology",
+      "Debugging"
+    ],
+    "readTime": 4,
+    "createdAt": "2026-07-12T10:00:00.000Z",
+    "published": true
+  }
+]

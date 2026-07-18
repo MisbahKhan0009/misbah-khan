@@ -1,0 +1,183 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+\input{glyphtounicode}
+
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+\begin{center}
+    \textbf{\Huge \scshape Md. Misbah Khan} \\ \vspace{1pt}
+ \small +8801815795240 $|$ \href{mkhanmisbah007@gmail.com}{\underline{mkhanmisbah007@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/misbah-khan-mejba}{\underline{linkedin.com/in/misbah-khan-mejba}} $|$
+    \href{https://github.com/MisbahKhan0009}{\underline{github.com/MisbahKhan0009}}
+\end{center}
+
+
+%-----------Professional summary-----------
+\section{CAREER OBJECTIVE
+}
+  As a passionate problem solver with a strong interest in Data Analytics and Machine Learning, I have built a solid foundation in data manipulation, analysis, and visualization. I am eager to advance my career as a Data Analyst. I am looking for an opportunity to apply my analytical skills, work with real-world datasets, contribute meaningfully to projects, and continually expand my knowledge in data-driven decision making.
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {North South University}{Dhaka, Bangladesh}
+      {Bachelor of Science in Computer Science and Engineering}{Sep. 2021 -- Present}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+
+    \resumeSubheading
+      {Software Developer Intern}{May 2024 -- July 2024}
+      {PerceptronBD}{Dhaka, Bangladesh}
+      \resumeItemListStart
+        \resumeItem{Contributed to the \textbf{frontend development} of an \textbf{EdTech startup's website} using \textbf{React.js}, including the integration of \textbf{login and signup functionality} with \textbf{Google Firebase}.}
+        \resumeItem{Assisted in \textbf{backend development} for a \textbf{restaurant chain's website} using \textbf{Express.js}, designed to handle \textbf{over 1,000} customers daily, ensuring \textbf{efficient performance} and \textbf{scalability}.}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+  {\href{https://vg-desktopv0-2.pages.dev/}{\textbf{\underline{AnomalyNQA}}} $|$ \emph{PyTorch, React, Flask, Tauri, Docker}}{\textbf{January 2025 -- August 2025}}
+  \resumeItemListStart
+    \resumeItem{Developed an \textbf{intelligent video anomaly detection system} designed to identify unusual or suspicious activities in surveillance footage with high accuracy.}
+    \resumeItem{Trained a \textbf{transformer-based deep learning model} in \textbf{PyTorch} to enhance robustness against false detections and improve query relevance through \textbf{Negative Query Awareness (NQA)}.}
+    \resumeItem{Built a \textbf{cross-platform desktop application} for \textbf{Windows, macOS, and Linux} using \textbf{Tauri} and \textbf{React}, alongside a fully functional \textbf{web version}.}
+    \resumeItem{Implemented \textbf{Flask} as the backend service and containerized the entire application with \textbf{Docker} for scalable and portable deployment.}
+  \resumeItemListEnd
+
+
+  \resumeProjectHeading
+    {\href{https://github.com/MisbahKhan0009/Flood-Guard-Server/blob/main/ML\%20Model/Code/Flood_Guard\%20Final.ipynb}{\textbf{\underline{Flood Guard}}} $|$ \emph{Python, SQL, Pandas, Matplotlib, Seaborn, Scikit-learn}}{\textbf{July 2024 -- August 2024}}
+    \resumeItemListStart
+      \resumeItem{Conducted end-to-end \textbf{data analysis} on weather records (1949–2013) to identify climate patterns related to flooding.}
+      \resumeItem{Performed data \textbf{cleaning, transformation}, and \textbf{exploratory data analysis (EDA)} using \textbf{Pandas}, \textbf{Matplotlib}, and \textbf{Seaborn}.}
+      \resumeItem{Visualized key weather metrics and seasonal trends to understand flood behavior and assess risk factors.}
+      \resumeItem{Built a \textbf{machine learning model} with \textbf{Scikit-learn} to predict flood occurrence and support early warning systems.}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+  {\href{https://the-muse.pages.dev/}{\textbf{\underline{The Muse}}} $|$ \emph{React, Tailwind CSS, Express.js, Firebase Auth}}{\textbf{September 2023}}
+  \resumeItemListStart
+    \resumeItem{Developed a \textbf{modern, responsive hotel website} to showcase room listings, amenities, and booking features, providing a seamless user experience across devices.}
+    \resumeItem{Built the frontend using \textbf{React.js} and \textbf{Tailwind CSS}, ensuring a clean, performant, and visually appealing UI design.}
+    \resumeItem{Implemented a secure backend using \textbf{Express.js} with \textbf{Firebase Authentication} for user sign-in, registration, and session management.}
+  \resumeItemListEnd
+
+
+\resumeSubHeadingListEnd
+
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{:Python, JavaScript, Typescript, SQL (MySQL, Postgres),  C/C++, Java, HTML/CSS} \\
+     \textbf{Frameworks}{: React, Next.js, Node.js, Express.js, Django, LangChain} \\
+     \textbf{Developer Tools}{: Git, Docker, Kubernetes, Excel, PowerBI, Tableau } \\
+     \textbf{Libraries}{: Pandas, NumPy, Matplotlib, Seaborn, PyTorch}
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}
