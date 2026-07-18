@@ -306,6 +306,15 @@
     @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
   }
 
+  /* Hide scrollbar but keep scrollable */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Enhanced focus states for accessibility */
   a:focus-visible,
   button:focus-visible,

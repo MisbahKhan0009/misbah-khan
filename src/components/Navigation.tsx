@@ -217,7 +217,7 @@ export const Navigation = () => {
             animate="open"
             exit="closed"
           >
-            <div className="container h-full flex flex-col pt-32 md:pt-32 pb-12">
+            <div className="container h-full flex flex-col pt-32 md:pt-32 pb-12 overflow-y-auto scrollbar-hide">
               {/* Note: The toggle icon in the header remains visible and functional */}
 
               {/* Ambient Glow */}
