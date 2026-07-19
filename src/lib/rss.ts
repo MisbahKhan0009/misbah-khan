@@ -1,52 +1,29 @@
-import { supabase } from './supabase';
-import { Database } from './database.types';
-
-type Article = Database['public']['Tables']['articles']['Row'];
+import { getArticles } from './articles';
 
 export async function generateRSSFeed(): Promise<string> {
-  const { data: articles, error } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('published', true)
-    .order('created_at', { ascending: false })
-    .limit(50);
+  const articles = getArticles().filter(a => a.published);
+  const siteUrl = 'https://misbah-khan.me';
 
-  if (error || !articles) {
-    console.error('Error fetching articles for RSS:', error);
-    return '';
-  }
-
-  const siteUrl = import.meta.env.VITE_SITE_URL || 'https://yourdomain.com';
-  const buildDate = new Date().toUTCString();
-
-  const rssItems = (articles as Article[])
-    .map((article) => {
-      const pubDate = new Date(article.created_at).toUTCString();
-      const link = `${siteUrl}/articles/${article.slug}`;
-
-      return `
+  const items = articles.map(article => `
     <item>
       <title><![CDATA[${article.title}]]></title>
-      <link>${link}</link>
-      <guid isPermaLink="true">${link}</guid>
+      <link>${siteUrl}/articles/${article.slug}</link>
+      <guid>${siteUrl}/articles/${article.slug}</guid>
       <description><![CDATA[${article.excerpt || ''}]]></description>
-      <pubDate>${pubDate}</pubDate>
-    </item>`;
-    })
-    .join('\n');
+      <pubDate>${new Date(article.createdAt).toUTCString()}</pubDate>
+      <category>${article.category || ''}</category>
+    </item>
+  `).join('');
 
-  const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AI Automation Studio - Articles</title>
+    <title>Misbah Khan — Articles</title>
     <link>${siteUrl}</link>
-    <description>Insights on AI automation, n8n workflows, and production-ready systems</description>
+    <description>Technical articles on SQL, Python, automation, and data engineering.</description>
     <language>en-us</language>
-    <lastBuildDate>${buildDate}</lastBuildDate>
-    <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
-    ${rssItems}
+    <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml"/>
+    ${items}
   </channel>
 </rss>`;
-
-  return rssFeed;
 }

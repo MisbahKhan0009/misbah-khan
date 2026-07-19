@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { toast } from 'sonner';
-import { supabase } from '@/lib/supabase';
 import { Check, Copy, Terminal, Globe, Shield, Zap, AlertCircle } from 'lucide-react';
 
 const DeveloperPage = () => {
@@ -27,25 +26,13 @@ const DeveloperPage = () => {
 
         try {
             setIsGenerating(true);
-
-            // Generate random strings for API Key and Secret
             const apiKey = `sk_${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
             const secret = `whsec_${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
-
-            const { error } = await supabase.from('developer_webhooks').insert({
-                label,
-                url: webhookUrl,
-                api_key: apiKey,
-                secret: secret,
-            } as any);
-
-            if (error) throw error;
-
             setGeneratedConfig({ apiKey, secret });
-            toast.success('Webhook registered successfully!');
+            toast.success('Webhook credentials generated!');
         } catch (err) {
             console.error(err);
-            toast.error('Failed to register webhook. Please try again.');
+            toast.error('Failed to generate. Please try again.');
         } finally {
             setIsGenerating(false);
         }
@@ -366,7 +353,7 @@ return { verified: true, data: $items()[0].json.body };`}
                             >
                                 <h3 className="font-display text-3xl tracking-tighter">Security & Headers</h3>
                                 <p className="text-muted-foreground leading-relaxed">
-                                    All webhook requests originate from our Supabase Edge Runtime. Each request includes standard security headers to ensure integrity.
+                                    All webhook requests are signed using your secret. Each request includes standard security headers to ensure integrity.
                                 </p>
 
                                 <div className="space-y-6">

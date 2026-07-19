@@ -1,12 +1,22 @@
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error('Missing Supabase environment variables');
-}
-
-import { Database } from './database.types';
-
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);
+// Supabase removed — all data is now static/local
+// This stub exists to prevent import errors during migration
+export const supabase = {
+  from: (_table: string) => ({
+    select: () => Promise.resolve({ data: [], error: null }),
+    insert: () => Promise.resolve({ data: null, error: null }),
+    upsert: () => Promise.resolve({ data: null, error: null }),
+    update: () => Promise.resolve({ data: null, error: null }),
+    delete: () => Promise.resolve({ data: null, error: null }),
+    eq: () => ({ single: () => Promise.resolve({ data: null, error: null }) }),
+    order: () => ({ data: [], error: null }),
+    limit: () => ({ data: [], error: null }),
+    single: () => Promise.resolve({ data: null, error: null }),
+  }),
+  auth: {
+    getSession: () => Promise.resolve({ data: { session: null } }),
+    onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } } }),
+  },
+  functions: {
+    invoke: () => Promise.resolve({ data: null, error: null }),
+  },
+};

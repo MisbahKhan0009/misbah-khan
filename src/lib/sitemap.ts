@@ -1,63 +1,42 @@
-import { supabase } from './supabase';
-import { Database } from './database.types';
+import { getArticles } from './articles';
 
-type Article = Database['public']['Tables']['articles']['Row'];
-type Project = Database['public']['Tables']['projects']['Row'];
+const CASE_STUDY_SLUGS = [
+  'claims-denial-engine',
+  'document-processor',
+  'retool-ops-dashboard',
+  'scraping-pipeline',
+  'automated-reporting',
+];
 
-export async function generateSitemap(): Promise<string> {
-    const siteUrl = import.meta.env.VITE_SITE_URL || 'https://yourdomain.com';
+export function generateSitemap(siteUrl: string): string {
+  const articles = getArticles().filter(a => a.published);
 
-    // Fetch all published articles
-    const { data: articles } = await supabase
-        .from('articles')
-        .select('slug, created_at')
-        .eq('published', true);
+  const staticPages = ['', '/projects', '/articles'].map(path => `
+  <url>
+    <loc>${siteUrl}${path}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>${path === '' ? '1.0' : '0.8'}</priority>
+  </url>`).join('');
 
-    // Fetch all projects
-    const { data: projects } = await supabase
-        .from('projects')
-        .select('slug, created_at');
+  const articlePages = articles.map(a => `
+  <url>
+    <loc>${siteUrl}/articles/${a.slug}</loc>
+    <lastmod>${new Date(a.createdAt).toISOString().split('T')[0]}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>`).join('');
 
-    const staticPages = [
-        { url: '', priority: '1.0', changefreq: 'weekly' },
-        { url: '#automations', priority: '0.8', changefreq: 'monthly' },
-        { url: '#work', priority: '0.8', changefreq: 'weekly' },
-        { url: '#articles', priority: '0.8', changefreq: 'weekly' },
-        { url: '#about', priority: '0.7', changefreq: 'monthly' },
-        { url: '#contact', priority: '0.7', changefreq: 'monthly' },
-    ];
+  const projectPages = CASE_STUDY_SLUGS.map(slug => `
+  <url>
+    <loc>${siteUrl}/work/${slug}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`).join('');
 
-    const articleUrls = (articles || [] as Article[]).map((article) => ({
-        url: `/articles/${article.slug}`,
-        lastmod: new Date(article.created_at).toISOString().split('T')[0],
-        priority: '0.6',
-        changefreq: 'monthly',
-    }));
-
-    const projectUrls = (projects || [] as Project[]).map((project) => ({
-        url: `/work/${project.slug}`,
-        lastmod: new Date(project.created_at).toISOString().split('T')[0],
-        priority: '0.6',
-        changefreq: 'monthly',
-    }));
-
-    const allUrls = [...staticPages, ...articleUrls, ...projectUrls];
-
-    const urlEntries = allUrls
-        .map((page) => {
-            const lastmod = 'lastmod' in page ? `\n    <lastmod>${page.lastmod}</lastmod>` : '';
-            return `  <url>
-    <loc>${siteUrl}${page.url}</loc>${lastmod}
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
-  </url>`;
-        })
-        .join('\n');
-
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urlEntries}
+  ${staticPages}
+  ${articlePages}
+  ${projectPages}
 </urlset>`;
-
-    return sitemap;
 }
