@@ -111,40 +111,52 @@ export const AutomationPanel = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + index * 0.12 }}
-              whileHover={{ y: -6 }}
-              className={`group relative rounded-3xl border border-white/5 ${platform.borderHover} bg-[#030303]/80 backdrop-blur-xl p-7 flex flex-col transition-all duration-300 hover:shadow-xl`}
+              whileHover={{ y: -6, scale: 1.01 }}
+              className={`group relative rounded-3xl overflow-hidden border border-primary/10 ${platform.borderHover} bg-[#060e0a] transition-all duration-500`}
             >
-              {/* Header */}
-              <div className="flex items-start justify-between mb-5">
-                <div className={`w-12 h-12 rounded-xl ${platform.iconBg} flex items-center justify-center transition-all duration-300`}>
-                  <platform.icon size={22} />
-                </div>
-                <ExternalLink size={14} className="text-muted-foreground/20 group-hover:text-muted-foreground/60 transition-colors mt-1" />
+              {/* Ghost icon background */}
+              <div className="absolute top-4 right-4 opacity-[0.07] group-hover:opacity-[0.15] group-hover:scale-125 transition-all duration-500 pointer-events-none origin-top-right">
+                <platform.icon size={140} strokeWidth={0.8} />
               </div>
 
-              {/* Name */}
-              <h3 className="font-display text-xl text-foreground mb-0.5 group-hover:text-white transition-colors">
-                {platform.name}
-              </h3>
-              <p className="text-[11px] font-mono text-muted-foreground/60 mb-5">{platform.handle}</p>
+              {/* Tint overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-transparent pointer-events-none" />
 
-              {/* Stats Row */}
-              <div className="grid grid-cols-3 gap-3 py-4 border-y border-white/5 mb-5">
-                {platform.stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <p className="text-base font-display font-bold text-primary">{stat.value}</p>
-                    <p className="text-[9px] font-mono text-muted-foreground/50 uppercase tracking-wider mt-0.5">{stat.label}</p>
+              <div className="relative z-10 p-7 flex flex-col h-full">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-9 h-9 rounded-xl ${platform.iconBg} flex items-center justify-center transition-all duration-300`}>
+                      <platform.icon size={18} />
+                    </div>
+                    <span className="text-[10px] font-mono text-primary uppercase tracking-widest">
+                      {platform.name}
+                    </span>
                   </div>
-                ))}
-              </div>
+                  <ExternalLink size={13} className="text-muted-foreground/20 group-hover:text-muted-foreground/60 transition-colors" />
+                </div>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-1.5 mt-auto">
-                {platform.tags.map(tag => (
-                  <span key={tag} className="text-[9px] font-mono text-muted-foreground/60 bg-white/[0.03] px-2 py-0.5 rounded border border-white/5">
-                    {tag}
-                  </span>
-                ))}
+                {/* Handle */}
+                <p className="text-xs font-mono text-muted-foreground/50 mb-6">{platform.handle}</p>
+
+                {/* Stats */}
+                <div className="grid grid-cols-3 gap-3 py-5 border-y border-white/[0.06] mb-6">
+                  {platform.stats.map((stat) => (
+                    <div key={stat.label} className="text-center">
+                      <p className="text-base font-display font-bold text-primary">{stat.value}</p>
+                      <p className="text-[9px] font-mono text-muted-foreground/50 uppercase tracking-wider mt-0.5">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5 mt-auto">
+                  {platform.tags.map(tag => (
+                    <span key={tag} className="text-[9px] font-mono text-muted-foreground/60 bg-white/[0.03] px-2 py-0.5 rounded border border-white/[0.06]">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.a>
           ))}

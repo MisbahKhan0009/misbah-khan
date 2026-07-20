@@ -152,7 +152,7 @@ const Projects = () => {
 
           {/* Grid */}
           {filteredProjects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects.map((project, i) => {
                 const Icon = project.icon;
                 return (
@@ -160,37 +160,54 @@ const Projects = () => {
                     <motion.article
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="group h-full bg-card/30 backdrop-blur-sm border border-white/5 rounded-3xl overflow-hidden hover:border-primary/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/5"
+                      transition={{ delay: i * 0.08 }}
+                      whileHover={{ y: -6, scale: 1.01 }}
+                      className="relative h-full rounded-3xl overflow-hidden border border-primary/10 hover:border-primary/40 transition-all duration-500 bg-[#060e0a] group"
                     >
-                      <div className="p-8 h-full flex flex-col">
-                        <div className="flex items-start justify-between mb-6">
-                          <div className="p-3 rounded-xl bg-primary/10 text-primary border border-primary/20 group-hover:scale-110 transition-transform">
-                            <Icon size={20} />
+                      {/* Ghost icon */}
+                      <div className="absolute top-4 right-4 opacity-[0.07] group-hover:opacity-[0.15] group-hover:scale-125 transition-all duration-500 pointer-events-none origin-top-right">
+                        <Icon size={120} strokeWidth={0.8} />
+                      </div>
+
+                      {/* Green tint */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-transparent pointer-events-none" />
+
+                      <div className="relative z-10 p-7 h-full flex flex-col">
+                        {/* Header */}
+                        <div className="flex items-center justify-between mb-8">
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                              <Icon size={18} />
+                            </div>
+                            <span className="text-[10px] font-mono text-primary uppercase tracking-widest">
+                              {project.category}
+                            </span>
                           </div>
-                          <span className="text-xs font-mono text-muted-foreground border border-white/10 px-2 py-1 rounded-md uppercase">
-                            {project.category}
-                          </span>
                         </div>
 
-                        <h3 className="font-display text-2xl mb-3 group-hover:text-primary transition-colors">
+                        <h3 className="font-display text-2xl text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
                           {project.title}
                         </h3>
-                        <p className="text-muted-foreground text-sm line-clamp-3 mb-6 flex-grow">
+                        <p className="text-sm text-muted-foreground/80 line-clamp-3 mb-auto leading-relaxed">
                           {project.description}
                         </p>
 
-                        <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5 mt-auto">
-                          {project.tags.slice(0, 3).map(tag => (
-                            <span key={tag} className="text-[10px] font-mono text-primary/70 bg-primary/5 px-2 py-1 rounded border border-primary/10">
-                              {tag}
-                            </span>
-                          ))}
-                          {project.tags.length > 3 && (
-                            <span className="text-[10px] font-mono text-muted-foreground px-2 py-1">
-                              +{project.tags.length - 3}
-                            </span>
-                          )}
+                        <div className="mt-8 pt-5 border-t border-white/[0.06] flex items-end justify-between">
+                          <div className="flex flex-wrap gap-1.5">
+                            {project.tags.slice(0, 3).map(tag => (
+                              <span key={tag} className="text-[9px] font-mono text-muted-foreground/60 px-2 py-1 rounded bg-white/[0.03] border border-white/[0.06]">
+                                #{tag}
+                              </span>
+                            ))}
+                            {project.tags.length > 3 && (
+                              <span className="text-[9px] font-mono text-muted-foreground/40 px-2 py-1">
+                                +{project.tags.length - 3}
+                              </span>
+                            )}
+                          </div>
+                          <div className="flex-shrink-0 w-9 h-9 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background transition-all duration-300 ml-3">
+                            <ArrowUpRight size={15} />
+                          </div>
                         </div>
                       </div>
                     </motion.article>

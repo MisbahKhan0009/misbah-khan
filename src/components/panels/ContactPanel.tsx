@@ -82,58 +82,76 @@ export const ContactPanel = () => {
           </motion.div>
 
           {/* Right side — info card */}
-          <motion.div
+          <motion.a
+            href="https://mail.google.com/mail/?view=cm&to=mkhanmisbah007@gmail.com&su=Hello%20Misbah"
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative rounded-3xl p-[1px] overflow-hidden"
+            whileHover={{ y: -6, scale: 1.01 }}
+            className="group relative rounded-3xl overflow-hidden border border-primary/10 hover:border-primary/40 bg-[#060e0a] transition-all duration-500"
           >
-            {/* Gradient border */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700" />
+            {/* Ghost icon */}
+            <div className="absolute top-4 right-4 opacity-[0.07] group-hover:opacity-[0.15] group-hover:scale-125 transition-all duration-500 pointer-events-none origin-top-right">
+              <Mail size={140} strokeWidth={0.8} />
+            </div>
 
-            <div className="relative h-full rounded-[23px] bg-[#030303]/90 backdrop-blur-xl overflow-hidden p-8 md:p-10 space-y-8">
-              {/* Noise texture */}
-              <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-              {/* Corner glow */}
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/20 blur-[60px] rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-700 pointer-events-none" />
+            {/* Green tint */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-transparent pointer-events-none" />
+
+            <div className="relative z-10 p-8 flex flex-col gap-8">
+              {/* Header */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                    <Mail size={18} />
+                  </div>
+                  <span className="text-[10px] font-mono text-primary uppercase tracking-widest">Contact</span>
+                </div>
+                <div className="flex items-center gap-1.5 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  <span className="text-[9px] font-mono text-primary uppercase tracking-widest">Available</span>
+                </div>
+              </div>
 
               {/* Email */}
-              <div className="relative z-10">
-                <p className="text-[9px] font-mono uppercase tracking-widest text-primary/60 mb-2">Reach me at</p>
-                <a
-                  href="https://mail.google.com/mail/?view=cm&to=mkhanmisbah007@gmail.com&su=Hello%20Misbah"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xl md:text-2xl font-mono text-foreground hover:text-primary transition-colors break-all"
-                >
+              <div>
+                <p className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground/50 mb-2">Reach me at</p>
+                <p className="text-lg md:text-xl font-mono text-foreground group-hover:text-primary transition-colors break-all">
                   mkhanmisbah007@gmail.com
-                </a>
+                </p>
               </div>
 
               {/* Divider */}
-              <div className="relative z-10 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
 
               {/* Local Time */}
-              <div className="relative z-10">
-                <p className="text-[9px] font-mono uppercase tracking-widest text-primary/60 mb-2">Local Time (Dhaka, GMT+6)</p>
+              <div>
+                <p className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground/50 mb-2">Local Time — Dhaka (GMT+6)</p>
                 <p className="text-3xl md:text-4xl font-mono font-bold text-foreground tracking-tight">
                   {currentTime.toLocaleTimeString('en-US', { timeZone: 'Asia/Dhaka', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                 </p>
               </div>
 
               {/* Divider */}
-              <div className="relative z-10 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
 
-              {/* Status */}
-              <div className="relative z-10 flex items-center gap-3">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/50" />
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary" />
-                </span>
-                <span className="text-sm text-muted-foreground">Currently available for new opportunities</span>
+              {/* Bottom row */}
+              <div className="flex items-center justify-between">
+                <div className="flex flex-wrap gap-1.5">
+                  {['PostgreSQL', 'Python', 'Retool', 'LangChain'].map(tag => (
+                    <span key={tag} className="text-[9px] font-mono text-muted-foreground/50 bg-white/[0.03] px-2 py-0.5 rounded border border-white/[0.06]">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background transition-all duration-300 ml-4">
+                  <Send size={16} />
+                </div>
               </div>
             </div>
-          </motion.div>
+          </motion.a>
         </div>
       </div>
     </div>
